@@ -36,15 +36,23 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+         width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromRGBO(193, 53, 132, 1),
+              Color.fromRGBO(131, 58, 180, 1),
+          ],)),
         padding: EdgeInsets.all(50),
-        color: Colors.white,
+
         child: Stack(
           children: [
             Center(
-              child: Image.asset(
-                "assets/images/ic_logo.png",
-                height: 100,
-                width: 100,
+              child: Text(
+                "Instagram",
+                style: TextStyle(color: Colors.white, fontSize: 45, fontFamily: "Billabong"),
               ),
             ),
             Container(
@@ -53,8 +61,8 @@ class _SplashPageState extends State<SplashPage> {
                 children: [
                   Center(
                     child: Text(
-                      "Powered by Facebook",
-                      style: TextStyle(color: Colors.black54, fontSize: 17),
+                      "All rights reserved",
+                      style: TextStyle(color: Colors.white, fontSize: 17),
                     ),
                   )
                 ],

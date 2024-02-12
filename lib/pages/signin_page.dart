@@ -12,12 +12,11 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-
-  _callSignUpPage(){
+  _callSignUpPage() {
     Navigator.pushReplacementNamed(context, SignUpPage.id);
   }
 
-  _callHomePage(){
+  _callHomePage() {
     Navigator.pushReplacementNamed(context, HomePage.id);
   }
 
@@ -26,90 +25,109 @@ class _SignInPageState extends State<SignInPage> {
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color.fromRGBO(193, 53, 132, 1),
+                  Color.fromRGBO(131, 58, 180, 1),
+                ])),
         padding: EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // #logopart
-            Text(
-              "Instagram",
-              style: TextStyle(fontSize: 45, fontFamily: "Billabong"),
-            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // #logopart
+                  Text(
+                    "Instagram",
+                    style: TextStyle(
+                        fontSize: 45,
+                        fontFamily: "Billabong",
+                        color: Colors.white),
+                  ),
 
-            // #emailinput
-            Container(
-              height: 48,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Colors.grey[200]),
-              child: TextField(
-                style: TextStyle(fontSize: 16),
-                decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(10),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.teal),
+                  // #emailinput
+                  Container(
+                    height: 50,
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(7),
+                        color: Colors.white.withOpacity(0.2)),
+                    child: TextField(
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                          hintText: "Email",
+                          border: InputBorder.none,
+                          hintStyle:
+                          TextStyle(fontSize: 17, color: Colors.white54)),
                     ),
-                    hintText: "Email",
-                    hintStyle: TextStyle(color: Colors.grey)),
-              ),
-            ),
+                  ),
 
-            // #passwordinput
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              height: 48,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Colors.grey[200]),
-              child: TextField(
-                style: TextStyle(fontSize: 16),
-                decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(10),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.teal),
+                  // #passwordinput
+                  Container(
+                    margin: EdgeInsets.only(top: 10),
+                    height: 50,
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(7),
+                        color: Colors.white.withOpacity(0.2)),
+                    child: TextField(
+                      style: TextStyle(color: Colors.white),
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          hintText: "Password",
+                          border: InputBorder.none,
+                          hintStyle:
+                          TextStyle(fontSize: 17, color: Colors.white54)),
                     ),
-                    hintText: "Password",
-                    hintStyle: TextStyle(color: Colors.grey)),
+                  ),
+
+                  // #signinbutton
+                  GestureDetector(
+                    onTap: _callHomePage,
+                    child: Container(
+                        width: double.infinity,
+                        margin: EdgeInsets.only(top: 10),
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Sign In",
+                            style: TextStyle(fontSize: 17, color: Colors.white),
+                          ),
+                        )),
+                  ),
+                ],
               ),
             ),
-
-            // #signinbutton
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(top: 10),
-              height: 48,
-              child: MaterialButton(
-                onPressed: () {
-                  _callHomePage();
-                },
-                color: Colors.blue,
-                textColor: Colors.white,
-                child: Text(
-                  "Sign In",
-                  style: TextStyle(fontSize: 16),
-                ),
-              ),
-            ),
-
             Container(
               height: 48,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "Don't have an account?",
-                    style: TextStyle(color: Colors.black87),
+                    style: TextStyle(color: Colors.white),
                   ),
-                  SizedBox(width: 10,),
+                  SizedBox(
+                    width: 10,
+                  ),
                   GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         _callSignUpPage();
                       },
                       child: Text(
                         "Sign Up",
-                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                      )
-                  ),
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      )),
                 ],
               ),
             ),
@@ -118,4 +136,5 @@ class _SignInPageState extends State<SignInPage> {
       ),
     );
   }
+
 }
